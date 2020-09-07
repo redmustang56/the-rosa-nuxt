@@ -1,0 +1,395 @@
+@import "../global-variables/colors.css";
+@import "../global-variables/media.css";
+@import "../global-variables/variables.css";
+
+* {
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.clearfix::after,
+.clearfix::before {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+html {
+  height: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
+
+  font-family: var(--body-font);
+  font-size: 10px;
+  color: var(--body-font-color);
+  scroll-behavior: smooth;
+
+&.locked {
+   overflow-y: hidden;
+ }
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+/* Убираем внутренние отступы, если есть класс */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+.cnt {
+  position: relative;
+  width: 100%;
+  max-width: 1960px;
+  padding: 0 38px;
+  margin: 0 auto;
+
+  @media(--max767) {
+    padding: 0 15px;
+  }
+}
+
+p {
+  display: block;
+  font-size: 25px;
+  @media (--mobile) {
+    font-size: 15px;
+    line-height: 1.2;
+  }
+}
+
+.title-1 {
+  font-size: 40px;
+  font-weight: 500;
+  margin: 20px 0;
+
+  @media (--mobile) {
+    font-size: 24px;
+  }
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+a {
+  display: inline;
+  color: inherit;
+  text-decoration: none;
+  transition: all ease .3s;
+}
+
+a:hover {
+  transition: all ease .3s;
+  cursor: pointer;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Удаляем все анимации и переходы для людей, которые предпочитают их не использовать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.i-icon {
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all ease .3s;
+  &--big {
+     width: 5em;
+     height: 5em;
+   }
+}
+
+section {
+  padding: 62px  0;
+  @media(--min900) {
+    padding: 62px;
+  }
+}
+.headline {
+  color: #fff;
+  font-family: var(--main-font);
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 75px;
+  letter-spacing: 8px;
+  margin-right: -8px;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  animation: scale .5s forwards;
+  @media(--min900) {
+    letter-spacing: 12px;
+  }
+  @media (--max767) {
+    font-size: 55px;
+  }
+  @media(--mobile) {
+    font-size: 32px;
+  }
+  &--dark {
+    color: var(--main-font-color-dark);
+    letter-spacing: 11px;
+    margin-right: -11px;
+  }
+}
+.sub-headline {
+  font-size: 136px;
+  font-family: var(--secondary-font);
+  color: var(--secondary-font-color);
+  font-weight: 400;
+  line-height: .4;
+  letter-spacing: 2px;
+  opacity: 0;
+  animation: fadeUp .5s forwards;
+  animation-delay: .5s;
+  @media(--min900) {
+    font-size: 160px;
+  }
+  @media (--max767) {
+    font-size: 86px;
+  }
+  @media(--mobile) {
+    font-size: 56px;
+  }
+}
+.separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+.line {
+  width: 100%;
+  max-width: 134px;
+  height: 4px;
+  background: #fff;
+  position: relative;
+  opacity: 0;
+  animation: grow .5s forwards;
+  animation-delay: .9s;
+  @media(--min900) {
+    max-width: 182px;
+  }
+  &__right, &__left {
+    &:before {
+      content: '';
+      position: absolute;
+      border: .6rem solid transparent;
+      opacity: 0;
+      animation: grow .5s forwards;
+      animation-delay: 1.2s;
+    }
+  }
+  &__right {
+    border-right-color: #fff;
+    right: 0;
+  }
+  &__left {
+    border-left-color: #fff;
+    left: 0;
+  }
+}
+.first-letter {
+  text-transform: uppercase;
+  font-size: 164px;
+  @media(--min900) {
+    font-size: 195px;
+  }
+  @media (--max767) {
+    font-size: 100px;
+  }
+  @media(--mobile) {
+    font-size: 70px;
+  }
+}
+.asterisk {
+  font-size: 19px;
+  color: var(--secondary-font-color);
+  margin: 0 25px;
+  animation: spin .5s forwards;
+  animation-delay: .7s;
+}
+.global-headline {
+  text-align: center;
+  margin-top: 62px;
+  .asterisk {
+    color: var(--body-font-color);
+    margin: 38px 0;
+  }
+  .sub-headline {
+    letter-spacing: -1px;
+    line-height: .42;
+  }
+}
+.restaurant {
+  &-info {
+    display: flex;
+    text-align: center;
+    @media(--min900) {
+      align-items: center;
+      > div {
+        flex: 1;
+      }
+    }
+    @media(--max1279) {
+      flex-direction: column;
+    }
+  }
+  &-description {
+    margin-bottom: 5px;
+    @media(--max1279) {
+      margin-bottom: 35px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 38px;
+    }
+  }
+}
+.padding-right {
+  @media(--min900) {
+    padding-right: 60px;
+  }
+}
+.single-animation {
+  opacity: 0;
+  animation: fadeDown .5s forwards;
+  animation-delay: 1.5s;
+}
+.back-to-top i {
+  animation: up 2s infinite;
+}
+
+/*Animation*/
+@keyframes fadeUp {
+  0% {
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes scale {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 100%;
+  }
+}
+@keyframes spin {
+  0% {
+   transform: rotate(0);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-360deg);
+  }
+}
+@keyframes fadeDown {
+  0% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes up {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+}
