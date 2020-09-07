@@ -1,0 +1,1 @@
+# the-rosa-nuxt
