@@ -1,8 +1,10 @@
-# {{ name }}
+# {{ The Rosa }}
 
-> {{ description }}
+> {{ Example }}
 
 ## Build Setup
+
+#link - https://the-rosa-nuxt.herokuapp.com/#hero
 
 ``` bash
 # install dependencies

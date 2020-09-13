@@ -43,6 +43,7 @@
         left: 0;
         z-index: 1;
         background-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent);
+        padding: 0 40px;
     }
     .n {
         height: 115px;
